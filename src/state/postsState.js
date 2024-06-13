@@ -17,7 +17,7 @@ export const reducerPosts = (state, actions) => {
     case ACTIONS_POSTS.UPDATE_POST:
       return {
         ...state,
-        posts: actions.posts.map((post) =>
+        posts: state.posts.map((post) =>
           post._id === actions.payload._id ? actions.payload : post
         ),
       };

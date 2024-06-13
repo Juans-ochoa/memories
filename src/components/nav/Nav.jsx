@@ -3,8 +3,10 @@ import "./index.css";
 function Nav() {
   return (
     <header className="nav">
-      <h2>My list</h2>
-      <button type="button">Login</button>
+      <h2 className="title">My Nemories</h2>
+      <button type="button" className="login">
+        Login
+      </button>
     </header>
   );
 }

@@ -32,10 +32,6 @@ const usePostsActions = () => {
   };
 
   const updatePost = async (post) => {
-    const postIndex = postsState.posts.findIndex(
-      ({ _id }) => _id === currentIdPost
-    );
-
     try {
       const data = await updateApiPost(currentIdPost, post);
 

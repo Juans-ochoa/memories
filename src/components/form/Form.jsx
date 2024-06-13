@@ -32,13 +32,13 @@ export default function Form() {
     if (!currentIdPost) {
       await createPost({
         ...data,
-        tags: form.data.tags.split(","),
+        tags: data.tags.split(","),
       });
-
-      setForm((prev) => ({ ...prev, ...STATE_FORM }));
     } else {
+      data.tags = data.tags.split(",");
       await updatePost(data);
     }
+    setForm((prev) => ({ ...prev, ...STATE_FORM }));
   };
 
   useEffect(() => {

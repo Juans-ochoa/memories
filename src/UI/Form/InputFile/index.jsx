@@ -56,7 +56,6 @@ function InputFile({ selectFile }) {
     });
 
     nodeInputFile.click();
-    nodeInputFile.remove();
   };
 
   useEffect(() => {
@@ -69,6 +68,7 @@ function InputFile({ selectFile }) {
       onDrop={onDropHandler}
       onDragOver={onDragOverHandler}
       onClick={selectFileWithClick}
+      type="button"
     >
       {urlFile ? (
         <>

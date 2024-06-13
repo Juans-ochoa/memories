@@ -3,7 +3,7 @@ import "./index.css";
 
 export default function Post({ post }) {
   const { selectCurrentIdPost, deletePost } = usePostsActions();
-  const { title, creator, tags, message, _id, selectFile } = post;
+  const { title, creator, tags, message, _id, selectFile, likeCount } = post;
 
   return (
     <article className="card">
@@ -28,7 +28,7 @@ export default function Post({ post }) {
           className="btn-select"
           onClick={() => selectCurrentIdPost(_id)}
         >
-          🪝 Select
+          ⚙️
         </button>
         <button
           type="button"
@@ -36,6 +36,9 @@ export default function Post({ post }) {
           onClick={() => deletePost(_id)}
         >
           🗑️ Delete
+        </button>
+        <button type="button" className="likes" onClick={() => deletePost(_id)}>
+          <span>👍</span> <span>{likeCount || 0}</span>
         </button>
       </footer>
     </article>
