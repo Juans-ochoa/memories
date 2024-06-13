@@ -1,0 +1,26 @@
+.text-area {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  textarea.text {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 12px 8px;
+    border-radius: 8px;
+    border: 1px;
+    resize: vertical;
+    color: #000;
+
+    transition: outline 100ms ease-in;
+
+    &:focus {
+      outline: ridge 2px rgb(79, 147, 231);
+    }
+  }
+}
