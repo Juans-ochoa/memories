@@ -3,6 +3,7 @@ import {
   createApiPost,
   deleteApiPost,
   getApiPosts,
+  likePostMemorie,
   updateApiPost,
 } from "../../api/posts";
 import PostContext from "../../context/PostsContex";
@@ -44,9 +45,25 @@ const usePostsActions = () => {
     }
   };
 
+  const likePost = async (id) => {
+    try {
+      const data = await likePostMemorie(id);
+      dispatchPosts({
+        type: ACTIONS_POSTS.UPDATE_POST,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deletePost = async (id) => {
     try {
       await deleteApiPost(id);
+      dispatchPosts({
+        type: ACTIONS_POSTS.DELETE_POST,
+        payload: id,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -57,13 +74,14 @@ const usePostsActions = () => {
   };
 
   return {
-    getAllPosts,
-    postsState,
     createPost,
-    updatePost,
-    deletePost,
-    selectCurrentIdPost,
     currentIdPost,
+    deletePost,
+    getAllPosts,
+    likePost,
+    postsState,
+    selectCurrentIdPost,
+    updatePost,
   };
 };
 

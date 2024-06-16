@@ -37,6 +37,20 @@ export const updateApiPost = async (id, post) => {
   }
 };
 
+export const likePostMemorie = async (id) => {
+  const req = await fetch(URL + `/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (req.ok) {
+    const data = await req.json();
+    return data;
+  }
+};
+
 export const deleteApiPost = async (id) => {
   const req = await fetch(URL + `/${id}`, {
     method: "DELETE",

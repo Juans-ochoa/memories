@@ -22,6 +22,12 @@ export const reducerPosts = (state, actions) => {
         ),
       };
 
+    case ACTIONS_POSTS.DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== actions.payload),
+      };
+
     case ACTIONS_POSTS.SELECT_CURRENT_ID:
       return { ...state, currentIdPost: actions.payload };
 
