@@ -1,4 +1,4 @@
-const URL = "http://localhost:5000/posts";
+const URL = "http://localhost:5000/api/posts";
 
 export const getApiPosts = async () => {
   const req = await fetch(URL);
@@ -9,16 +9,19 @@ export const getApiPosts = async () => {
 };
 
 export const createApiPost = async (post) => {
-  const req = await fetch(URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(post),
-  });
-  if (req.ok) {
+  try {
+    const req = await fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(post),
+    });
+
     const data = await req.json();
     return data;
+  } catch (error) {
+    return Promise.reject(error);
   }
 };
 

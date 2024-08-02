@@ -20,6 +20,7 @@ export const reducerPosts = (state, actions) => {
         posts: state.posts.map((post) =>
           post._id === actions.payload._id ? actions.payload : post
         ),
+        currentIdPost: "",
       };
 
     case ACTIONS_POSTS.DELETE_POST:

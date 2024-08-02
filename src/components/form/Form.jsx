@@ -29,16 +29,21 @@ export default function Form() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!currentIdPost) {
-      await createPost({
-        ...data,
-        tags: data.tags.split(","),
-      });
-    } else {
-      data.tags = data.tags.split(",");
-      await updatePost(data);
+    try {
+      if (!currentIdPost) {
+        await createPost({
+          ...data,
+          tags: data.tags.split(","),
+        });
+      } else {
+        data.tags = data.tags.split(",");
+        await updatePost(data);
+      }
+
+      setForm((prev) => ({ ...prev, ...STATE_FORM }));
+    } catch (error) {
+      console.log(error);
     }
-    setForm((prev) => ({ ...prev, ...STATE_FORM }));
   };
 
   useEffect(() => {

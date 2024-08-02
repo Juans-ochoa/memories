@@ -26,7 +26,9 @@ const usePostsActions = () => {
   const createPost = async (post) => {
     try {
       const data = await createApiPost(post);
-      dispatchPosts({ type: ACTIONS_POSTS.CREATE_POST, payload: data });
+      if (data) {
+        dispatchPosts({ type: ACTIONS_POSTS.CREATE_POST, payload: data });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -35,11 +37,12 @@ const usePostsActions = () => {
   const updatePost = async (post) => {
     try {
       const data = await updateApiPost(currentIdPost, post);
-
-      dispatchPosts({
-        type: ACTIONS_POSTS.UPDATE_POST,
-        payload: data,
-      });
+      if (data) {
+        dispatchPosts({
+          type: ACTIONS_POSTS.UPDATE_POST,
+          payload: data,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
